@@ -12,7 +12,7 @@ namespace TC_BookStore
     [TestFixture]
     public class Class1
     {
-        //hello1
+        //hello2
         [SetUp]
         public void Start()
         { }
