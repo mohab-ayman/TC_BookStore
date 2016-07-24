@@ -15,6 +15,12 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Header_Menu_Field1")]
         private IWebElement LoginPageLink { get; set; }
 
+
+
+        [FindsBy(How = How.Id, Using = "Header_Menu_Reg")]
+        private IWebElement RegisterationPageLink { get; set; }
+
+
         private IWebDriver _driver;
         public MainPage(IWebDriver driver)
         {
@@ -32,6 +38,14 @@ namespace TC_BookStore.PageObjects
             LoginPageLink.Click();
             LoginPage loginPage = new LoginPage(_driver);
             return loginPage;
+        }
+
+
+        public RegisterationPage ClickOnRegisterLink()
+        {
+            RegisterationPageLink.Click();
+            RegisterationPage registerPage = new RegisterationPage(_driver);
+            return registerPage;
         }
     }
 }
