@@ -42,11 +42,11 @@ namespace TC_BookStore.PageObjects
         }
 
 
-        public RegisterationPage ClickOnRegisterLink()
-        {
-            RegisterationPageLink.Click();
-            RegisterationPage registerPage = new RegisterationPage(_driver);
-            return registerPage;
-        }
+        //public RegisterationPage ClickOnRegisterLink()
+        //{
+        //    RegisterationPageLink.Click();
+        //    RegisterationPage registerPage = new RegisterationPage(_driver);
+        //    return registerPage;
+        //}
     }
 }
