@@ -32,7 +32,7 @@ namespace TC_BookStore.TestCases
                 MainPage mainPage = new MainPage(driver);
                 mainPage.NavigateTo();
                 RegisterationPage registerPage = mainPage.ClickOnRegisterLink();
-                registerPage.RegisterUser(login, "123456789", "123456789", "Eman", "abdo22", "eman.farag22@yahoo.com", "Cairo", "01020730819", "Visa", "90182992339828");
+                registerPage.RegisterUser("Emz", "123456789", "123456789", "Eman", "abdo22", "eman.farag22@yahoo.com", "Cairo", "01020730819", "Visa", "90182992339828");
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
                // if( == "")
                 {
