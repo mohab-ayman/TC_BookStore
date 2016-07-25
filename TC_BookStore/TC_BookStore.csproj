@@ -54,6 +54,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PageObjects\AdminPage.cs" />
+    <Compile Include="PageObjects\CategoriesPage.cs" />
+    <Compile Include="PageObjects\InsertPage.cs" />
+    <Compile Include="PageObjects\ShoppingCartPage.cs" />
+    <Compile Include="TestCases\AdminTests.cs" />
     <Compile Include="TestCases\LoginTests.cs" />
     <Compile Include="PageObjects\LoginPage.cs" />
     <Compile Include="PageObjects\MainPage.cs" />

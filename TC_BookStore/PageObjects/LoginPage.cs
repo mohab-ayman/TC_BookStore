@@ -16,6 +16,10 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Login_password")]
         private IWebElement PasswordTextBox { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Login_login")]
+        private IWebElement LoginButton { get; set; }
+
+
         private IWebDriver _driver;
         public LoginPage(IWebDriver driver)
         {
@@ -27,6 +31,12 @@ namespace TC_BookStore.PageObjects
         {
             UserNameTextBox.SendKeys(username);
             PasswordTextBox.SendKeys(password);
+        }
+        public ShoppingCartPage SignIn()
+        {
+            LoginButton.Click();
+            ShoppingCartPage shoppingCart = new ShoppingCartPage(_driver);
+            return shoppingCart;
         }
     }
 }
