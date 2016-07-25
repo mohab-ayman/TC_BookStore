@@ -11,7 +11,7 @@ namespace TC_BookStore.PageObjects
 {
     public class MainPage
     {
-
+        #region Web Elements
         [FindsBy(How = How.Id, Using = "Header_Menu_Field1")]
         private IWebElement LoginPageLink { get; set; }
 
@@ -20,6 +20,7 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Header_Menu_Reg")]
         private IWebElement RegisterationPageLink { get; set; }
 
+        #endregion
 
         private IWebDriver _driver;
         public MainPage(IWebDriver driver)
