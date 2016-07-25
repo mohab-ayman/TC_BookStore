@@ -19,7 +19,8 @@ namespace TC_BookStore
         [SetUp]
         public void Start()
         {
-            _driver = new FirefoxDriver();    
+            _driver = new FirefoxDriver();
+            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
         }
 
         [TearDown]
