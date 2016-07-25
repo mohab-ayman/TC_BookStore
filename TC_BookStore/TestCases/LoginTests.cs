@@ -37,6 +37,7 @@ namespace TC_BookStore
             LoginPage loginPage =  mainPage.ClickOnLoginLink();
             loginPage.FillLoginData("admin", "admin");
             ShoppingCartPage shoppingCart = loginPage.SignIn();
+            Assert.AreEqual("User Information", shoppingCart.Header.Text);
         }
     }
 }
