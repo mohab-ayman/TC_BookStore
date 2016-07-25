@@ -9,10 +9,10 @@ using NUnit.Framework;
 using TC_BookStore.PageObjects;
 using System.Configuration;
 
-namespace TC_BookStore
+namespace TC_BookStore.TestCases
 {
     [TestFixture]
-    public class LoginTests
+    class AdminTests
     {
         private IWebDriver _driver;
 
@@ -20,7 +20,6 @@ namespace TC_BookStore
         public void Start()
         {
             _driver = new FirefoxDriver();
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
         }
 
         [TearDown]
@@ -28,15 +27,21 @@ namespace TC_BookStore
         {
             _driver.Quit();
         }
-
         [Test]
-        public void LoginWithAdmin()
+        public void InsertCategory()
         {
             MainPage mainPage = new MainPage(_driver);
             mainPage.NavigateTo();
-            LoginPage loginPage =  mainPage.ClickOnLoginLink();
+            LoginPage loginPage = mainPage.ClickOnLoginLink();
             loginPage.FillLoginData("admin", "admin");
             ShoppingCartPage shoppingCart = loginPage.SignIn();
+            AdminPage adminPage = shoppingCart.ClickOnAdminPage();
+            CategoriesPage categoriesPage = adminPage.ClickOnCategories();
+            InsertPage insertPage = categoriesPage.ClickOnInsert();
+            categoriesPage = insertPage.FillCatName("New Category1");
+            insertPage = categoriesPage.ClickOnInsert();
+            categoriesPage = insertPage.FillCatName("New Category2");
         }
+
     }
 }
