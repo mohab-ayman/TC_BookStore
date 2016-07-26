@@ -13,6 +13,9 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Header_Menu_Admin")]
         private IWebElement AdminLink { get; set; }
 
+        [FindsBy(How = How.Id, Using = "MemberForm_Title")]
+        public IWebElement Header { get; set; }
+
         private IWebDriver _driver;
         public ShoppingCartPage(IWebDriver driver)
         {

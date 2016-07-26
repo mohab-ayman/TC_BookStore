@@ -27,6 +27,13 @@ namespace TC_BookStore.PageObjects
             return insertPage;
         }
 
-
+        public Boolean CheckCategory(string cat)
+        {
+           Boolean InsertedCat = _driver.FindElement(By.LinkText(cat)).Displayed;
+            if (InsertedCat == true)
+                return true;
+            else
+                return false;
+        }
     }
 }

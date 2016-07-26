@@ -41,6 +41,7 @@ namespace TC_BookStore.TestCases
             categoriesPage = insertPage.FillCatName("New Category1");
             insertPage = categoriesPage.ClickOnInsert();
             categoriesPage = insertPage.FillCatName("New Category2");
+            Assert.True(categoriesPage.CheckCategory("New Category1"));
         }
 
     }
