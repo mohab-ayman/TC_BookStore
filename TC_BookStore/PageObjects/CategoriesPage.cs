@@ -26,5 +26,7 @@ namespace TC_BookStore.PageObjects
             InsertPage insertPage = new InsertPage(_driver);
             return insertPage;
         }
+
+
     }
 }

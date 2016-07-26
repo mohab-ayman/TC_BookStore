@@ -57,6 +57,7 @@
     <Compile Include="PageObjects\AdminPage.cs" />
     <Compile Include="PageObjects\CategoriesPage.cs" />
     <Compile Include="PageObjects\InsertPage.cs" />
+    <Compile Include="PageObjects\MembersPage.cs" />
     <Compile Include="PageObjects\RegisterationPage.cs" />
     <Compile Include="PageObjects\ShoppingCartPage.cs" />
     <Compile Include="TestCases\AdminTests.cs" />

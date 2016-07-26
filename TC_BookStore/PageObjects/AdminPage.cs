@@ -13,6 +13,10 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Form_Field4")]
         private IWebElement Categories { get; set; }
 
+        [FindsBy(How = How.Id, Using = "Form_Field1")]
+        private IWebElement Members { get; set; }
+
+
         private IWebDriver _driver;
         public AdminPage(IWebDriver driver)
         {
@@ -27,6 +31,12 @@ namespace TC_BookStore.PageObjects
             return categoriesPage;
         }
 
+        public MembersPage ClickOnMembers()
+        {
+            Members.Click();
+            MembersPage MembersPage = new MembersPage(_driver);
+            return MembersPage;
+        }
 
     }
 }
