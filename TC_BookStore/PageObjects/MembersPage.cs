@@ -10,8 +10,8 @@ namespace TC_BookStore.PageObjects
 {
     public class MembersPage
     {
-        [FindsBy(How = How.LinkText, Using = )]
-        private IWebElement UserRegistered { get; set; }
+        //[FindsBy(How = How.LinkText, Using = )]
+        //private IWebElement UserRegistered { get; set; }
 
         private IWebDriver _driver;
         public MembersPage(IWebDriver driver)
