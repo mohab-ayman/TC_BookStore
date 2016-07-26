@@ -10,9 +10,6 @@ namespace TC_BookStore.PageObjects
 {
     public class MembersPage
     {
-        //[FindsBy(How = How.LinkText, Using = )]
-        //private IWebElement UserRegistered { get; set; }
-
         private IWebDriver _driver;
         public MembersPage(IWebDriver driver)
         {
@@ -20,6 +17,10 @@ namespace TC_BookStore.PageObjects
             PageFactory.InitElements(_driver, this);
         }
 
+        public Boolean UserExists(string userName)
+        {
+            return _driver.FindElement(By.LinkText(userName)).Displayed;
+        }
     }
 
 
