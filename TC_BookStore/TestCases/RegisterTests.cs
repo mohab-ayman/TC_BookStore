@@ -33,15 +33,16 @@ namespace TC_BookStore.TestCases
                 ShoppingCartPage ShopCart = new ShoppingCartPage(driver);
                 mainPage.NavigateTo();
                 RegisterationPage registerPage = mainPage.ClickOnRegisterLink();
-                registerPage.RegisterUser("Emty", "123451789", "123451789", "Eman122", "abdo12", "eman.farag3@yahoo.com", "Cairo", "01020730815", "Visa", "9018992339828");
+                registerPage.RegisterUser("Emzy5", "123451788", "123451788", "Eman2", "abdo12", "eman.farag3@yahoo.com", "Cairo", "01020730816", "Visa", "9018992339828");
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
            
                 Assert.AreEqual(this.driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
                 LoginPage loginPage = mainPage.ClickOnLoginLink();
                 loginPage.FillLoginData("admin", "admin");
+                ShoppingCartPage shoppingCart = loginPage.SignIn();
                 AdminPage Admin = ShopCart.ClickOnAdminPage();
                 MembersPage Members = Admin.ClickOnMembers();
-                Assert.True(Members.UserExists("Emty"));
+                Assert.True(Members.UserExists("Emzy5"));
         
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
             }
