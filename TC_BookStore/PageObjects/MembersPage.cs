@@ -10,6 +10,19 @@ namespace TC_BookStore.PageObjects
 {
     public class MembersPage
     {
+
+        #region Locators
+
+        [FindsBy(How = How.Id, Using = "Members_delete")]
+        [CacheLookup]
+        public IWebElement DeleteBtn { get; set; }
+
+
+        [FindsBy(How = How.Id, Using = "Record_member_login")]
+        [CacheLookup]
+        public IWebElement UserLink { get; set; }
+        #endregion
+
         private IWebDriver _driver;
         public MembersPage(IWebDriver driver)
         {
@@ -19,7 +32,21 @@ namespace TC_BookStore.PageObjects
 
         public Boolean UserExists(string userName)
         {
-            return _driver.FindElement(By.LinkText(userName)).Displayed;
+            try
+            {
+                return _driver.FindElement(By.LinkText(userName)).Displayed;
+            }
+            catch (NoSuchElementException ex)
+            {
+                return false;
+            }
+        }
+
+        public void DeleteUser(string userName)
+        {
+            _driver.FindElement(By.LinkText(userName)).Click();
+            UserLink.Click();
+            DeleteBtn.Click();
         }
     }
 

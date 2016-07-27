@@ -32,7 +32,7 @@ namespace TC_BookStore.TestCases
                 ShoppingCartPage ShopCart = new ShoppingCartPage(driver);
                 mainPage.NavigateTo();
                 RegisterationPage registerPage = mainPage.ClickOnRegisterLink();
-                registerPage.RegisterUser("Emty", "123451789", "123451789", "Eman122", "abdo12", "eman.farag3@yahoo.com", "Cairo", "01020730815", "Visa", "9018992339828");
+                registerPage.RegisterUser("Mony", "123451789", "123451789", "Eman122", "abdo12", "eman.farag3@yahoo.com", "Cairo", "01020730815", "Visa", "9018992339828");
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
            
                 Assert.AreEqual(this.driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
@@ -40,14 +40,19 @@ namespace TC_BookStore.TestCases
                 ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
                 AdminPage Admin = ShopCart.ClickOnAdminPage();
                 MembersPage Members = Admin.ClickOnMembers();
-                Assert.True(Members.UserExists("Emty"));
-        
+                Assert.True(Members.UserExists("Mony"));
+                driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+
+                Members.DeleteUser("Mony");
+                Assert.False(Members.UserExists("Mony"));
+
                 driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
             }
 
             [TearDown]
             public void End()
             {
+               
                 driver.Quit();
             }
 
