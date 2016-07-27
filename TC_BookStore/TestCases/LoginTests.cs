@@ -34,9 +34,8 @@ namespace TC_BookStore
         {
             MainPage mainPage = new MainPage(_driver);
             mainPage.NavigateTo();
-            LoginPage loginPage =  mainPage.ClickOnLoginLink();
-            loginPage.FillLoginData("admin", "admin");
-            ShoppingCartPage shoppingCart = loginPage.SignIn();
+            LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
+            ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
             Assert.AreEqual("User Information", shoppingCart.Header.Text);
         }
     }

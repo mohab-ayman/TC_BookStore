@@ -22,11 +22,14 @@ namespace TC_BookStore.PageObjects
 
         #endregion
 
+        public Header pageHeader;
+
         private IWebDriver _driver;
         public MainPage(IWebDriver driver)
         {
             _driver = driver;
             PageFactory.InitElements(_driver, this);
+            pageHeader = new Header(_driver);
         }
 
         public void NavigateTo()
