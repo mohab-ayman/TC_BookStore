@@ -33,8 +33,7 @@ namespace TC_BookStore.TestCases
             MainPage mainPage = new MainPage(_driver);
             mainPage.NavigateTo();
             LoginPage loginPage = mainPage.ClickOnLoginLink();
-            loginPage.FillLoginData("admin", "admin");
-            ShoppingCartPage shoppingCart = loginPage.SignIn();
+            ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
             AdminPage adminPage = shoppingCart.ClickOnAdminPage();
             CategoriesPage categoriesPage = adminPage.ClickOnCategories();
             InsertPage insertPage = categoriesPage.ClickOnInsert();

@@ -19,24 +19,36 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Login_login")]
         private IWebElement LoginButton { get; set; }
 
+        #region Web Parts
+
+        public Header pageHeader;
+
+        #endregion
 
         private IWebDriver _driver;
         public LoginPage(IWebDriver driver)
         {
             _driver = driver;
             PageFactory.InitElements(_driver, this);
+            pageHeader = new Header(_driver);
         }
 
-        public void FillLoginData(string username, string password)
+        public ShoppingCartPage SignIn(string username, string password)
         {
             UserNameTextBox.SendKeys(username);
             PasswordTextBox.SendKeys(password);
-        }
-        public ShoppingCartPage SignIn()
-        {
             LoginButton.Click();
             ShoppingCartPage shoppingCart = new ShoppingCartPage(_driver);
             return shoppingCart;
+        }
+
+        public AdminPage SignInFromAdminPage(string username, string password)
+        {
+            UserNameTextBox.SendKeys(username);
+            PasswordTextBox.SendKeys(password);
+            LoginButton.Click();
+            AdminPage adminPage = new AdminPage(_driver);
+            return adminPage;
         }
     }
 }

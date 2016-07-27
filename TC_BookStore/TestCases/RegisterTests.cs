@@ -37,7 +37,7 @@ namespace TC_BookStore.TestCases
            
                 Assert.AreEqual(this.driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
                 LoginPage loginPage = mainPage.ClickOnLoginLink();
-                loginPage.FillLoginData("admin", "admin");
+                ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
                 AdminPage Admin = ShopCart.ClickOnAdminPage();
                 MembersPage Members = Admin.ClickOnMembers();
                 Assert.True(Members.UserExists("Emty"));
