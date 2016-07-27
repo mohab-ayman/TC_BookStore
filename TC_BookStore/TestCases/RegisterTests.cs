@@ -28,7 +28,6 @@ namespace TC_BookStore.TestCases
             [Test]
             public void RegisterationTest()
             {
-              
                 MainPage mainPage = new MainPage(driver);
                 ShoppingCartPage ShopCart = new ShoppingCartPage(driver);
                 mainPage.NavigateTo();
