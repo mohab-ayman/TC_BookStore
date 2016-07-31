@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class LoginPage
+    public class LoginPage : Page
     {
         [FindsBy(How = How.Id, Using = "Login_name")]
         private IWebElement UserNameTextBox { get; set; }
@@ -19,18 +20,9 @@ namespace TC_BookStore.PageObjects
         [FindsBy(How = How.Id, Using = "Login_login")]
         private IWebElement LoginButton { get; set; }
 
-        #region Web Parts
-
-        public Header pageHeader;
-
-        #endregion
-
-        private IWebDriver _driver;
-        public LoginPage(IWebDriver driver)
+        public LoginPage(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
             PageFactory.InitElements(_driver, this);
-            pageHeader = new Header(_driver);
         }
 
         public ShoppingCartPage SignIn(string username, string password)
