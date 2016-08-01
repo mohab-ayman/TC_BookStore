@@ -6,31 +6,26 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using System.Configuration;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class MainPage
+    public class MainPage : Page
     {
         #region Web Elements
         [FindsBy(How = How.Id, Using = "Header_Menu_Field1")]
         private IWebElement LoginPageLink { get; set; }
 
-
-
         [FindsBy(How = How.Id, Using = "Header_Menu_Reg")]
         private IWebElement RegisterationPageLink { get; set; }
-
         #endregion
 
-        public Header pageHeader;
-
-        private IWebDriver _driver;
-        public MainPage(IWebDriver driver)
+        #region Constructors
+        public MainPage(IWebDriver driver) : base (driver)
         {
-            _driver = driver;
             PageFactory.InitElements(_driver, this);
-            pageHeader = new Header(_driver);
         }
+        #endregion
 
         public void NavigateTo()
         {

@@ -61,6 +61,7 @@
     <Compile Include="PageObjects\MembersPage.cs" />
     <Compile Include="PageObjects\RegisterationPage.cs" />
     <Compile Include="PageObjects\ShoppingCartPage.cs" />
+    <Compile Include="SuperClasses\Browser.cs" />
     <Compile Include="SuperClasses\Page.cs" />
     <Compile Include="TestCases\AdminTests.cs" />
     <Compile Include="TestCases\LoginTests.cs" />
