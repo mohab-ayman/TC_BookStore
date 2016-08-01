@@ -11,7 +11,7 @@ namespace TC_BookStore.PageObjects
     public class MembersPage
     {
 
-        #region Locators
+        #region Locatorsx
 
         [FindsBy(How = How.Id, Using = "Members_delete")]
         [CacheLookup]
