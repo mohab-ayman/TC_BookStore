@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class MembersPage
+    public class MembersPage : Page
     {
 
-        #region Locators
+        #region Web Elements
 
         [FindsBy(How = How.Id, Using = "Members_delete")]
         [CacheLookup]
@@ -23,13 +24,16 @@ namespace TC_BookStore.PageObjects
         public IWebElement UserLink { get; set; }
         #endregion
 
-        private IWebDriver _driver;
-        public MembersPage(IWebDriver driver)
+        #region Constructors
+
+        public MembersPage(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
             PageFactory.InitElements(_driver, this);
         }
 
+        #endregion
+
+        #region Page Operations
         public Boolean UserExists(string userName)
         {
             try
@@ -48,8 +52,11 @@ namespace TC_BookStore.PageObjects
             UserLink.Click();
             DeleteBtn.Click();
         }
+
+        #endregion
     }
 
 
 
 }
+
