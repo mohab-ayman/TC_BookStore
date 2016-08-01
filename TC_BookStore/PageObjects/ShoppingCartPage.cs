@@ -5,29 +5,40 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class ShoppingCartPage
+    public class ShoppingCartPage: Page
     {
+
+        #region Web Elements
         [FindsBy(How = How.Id, Using = "Header_Menu_Admin")]
         private IWebElement AdminLink { get; set; }
 
         [FindsBy(How = How.Id, Using = "MemberForm_Title")]
         public IWebElement Header { get; set; }
 
-        private IWebDriver _driver;
-        public ShoppingCartPage(IWebDriver driver)
+
+        #endregion
+
+        #region Constructors
+        public ShoppingCartPage(IWebDriver driver): base(driver)
         {
-            _driver = driver;
+           
             PageFactory.InitElements(_driver, this);
         }
 
+        #endregion
+
+        #region Page Operations
         public AdminPage ClickOnAdminPage()
         {
             AdminLink.Click();
             AdminPage adminPage = new AdminPage(_driver);
             return adminPage;
         }
+
+        #endregion
     }
 }

@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class RegisterationPage
+    public class RegisterationPage: Page
     {
         private IWebDriver driver;
 
-        #region Locators
+        #region Web Elements
 
         [FindsBy(How = How.Id, Using = "RegForm_Title")]
         [CacheLookup]
@@ -82,15 +83,18 @@ namespace TC_BookStore.PageObjects
         [CacheLookup]
         public IWebElement VerificationRegion { get; set; }
 
-        
+
         #endregion
 
-        public RegisterationPage(IWebDriver driver)
+        #region Constructors
+        public RegisterationPage(IWebDriver driver): base(driver)
         {
-            this.driver = driver;
-            PageFactory.InitElements(driver, this);
+            PageFactory.InitElements(_driver, this);
         }
 
+        #endregion
+
+        #region Page Operations
         public void RegisterUser(string username, string password, string repassword, string fname, string lname, string email, string addr, string phone, string ccType, string CCno)
 
         {
@@ -116,6 +120,7 @@ namespace TC_BookStore.PageObjects
             return MsgTxt;
       
         }
+        #endregion
     }
 }
     
