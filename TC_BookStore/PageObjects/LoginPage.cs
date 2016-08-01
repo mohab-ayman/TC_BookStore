@@ -11,6 +11,7 @@ namespace TC_BookStore.PageObjects
 {
     public class LoginPage : Page
     {
+        #region Web Elements
         [FindsBy(How = How.Id, Using = "Login_name")]
         private IWebElement UserNameTextBox { get; set; }
 
@@ -19,12 +20,16 @@ namespace TC_BookStore.PageObjects
 
         [FindsBy(How = How.Id, Using = "Login_login")]
         private IWebElement LoginButton { get; set; }
+        #endregion
 
+        #region Constructors
         public LoginPage(IWebDriver driver) : base(driver)
         {
             PageFactory.InitElements(_driver, this);
         }
+        #endregion
 
+        #region Page Operations
         public ShoppingCartPage SignIn(string username, string password)
         {
             UserNameTextBox.SendKeys(username);
@@ -42,5 +47,6 @@ namespace TC_BookStore.PageObjects
             AdminPage adminPage = new AdminPage(_driver);
             return adminPage;
         }
+        #endregion
     }
 }
