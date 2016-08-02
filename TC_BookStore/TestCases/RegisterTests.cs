@@ -8,6 +8,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using TC_BookStore.PageObjects;
 using System.Configuration;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.TestCases
 {
@@ -15,11 +16,14 @@ namespace TC_BookStore.TestCases
     class RegisterTests
     {
         IWebDriver _driver;
+        Browser browser;
 
         [SetUp]
         public void Start()
         {
-            _driver = new FirefoxDriver();
+            browser = new Browser();
+            browser.MaximizeWindow();
+            browser.setImplicitWait(30);
         }
 
 
@@ -34,28 +38,28 @@ namespace TC_BookStore.TestCases
             RegisterationPage registerPage = mainPage.pageHeader.ClickRegisterLink();
 
             //Register the user.
-            registerPage.RegisterUser("Mony", "123451789", "123451789", "Eman122", "abdo12", "eman.farag3@yahoo.com", "Cairo", "01020730815", "Visa", "9018992339828");
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
+            registerPage.RegisterUser("Em", "123451789", "123451789", "Eman2", "abdo2", "eman.farag3@yahoo.com", "Cairo", "01020730865", "Visa", "9018992339828");
 
+            //Assert user is registered successfully
             Assert.AreEqual(this._driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
-            LoginPage loginPage = header.ClickLoginLink();
+            LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
-            AdminPage Admin = header.ClickAdminLink();
+            AdminPage Admin = mainPage.pageHeader.ClickAdminLink();
             MembersPage Members = Admin.ClickOnMembers();
-            Assert.True(Members.UserExists("Mony"));
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
+            Assert.True(Members.UserExists("Em"));
+            browser.setImplicitWait(30);
 
-            Members.DeleteUser("Mony");
-            Assert.False(Members.UserExists("Mony"));
-
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(50));
+            //Delete user from list
+            Members.DeleteUser("Em");
+            Assert.False(Members.UserExists("Em"));
+            browser.setImplicitWait(30);
         }
 
         [TearDown]
         public void End()
         {
 
-            _driver.Quit();
+            browser.driver.Quit();
         }
 
     }
