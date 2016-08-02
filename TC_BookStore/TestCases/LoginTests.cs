@@ -8,31 +8,33 @@ using OpenQA.Selenium.Firefox;
 using NUnit.Framework;
 using TC_BookStore.PageObjects;
 using System.Configuration;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore
 {
     [TestFixture]
     public class LoginTests
     {
-        private IWebDriver _driver;
+        private Browser browser;
 
         [SetUp]
         public void Start()
         {
-            _driver = new FirefoxDriver();
-            _driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
+            browser = new Browser();
+            browser.MaximizeWindow();
+            browser.setImplicitWait(30);
         }
 
         [TearDown]
         public void End()
         {
-            _driver.Quit();
+            browser.driver.Quit();
         }
 
         [Test]
         public void LoginWithAdmin()
         {
-            MainPage mainPage = new MainPage(_driver);
+            MainPage mainPage = new MainPage(browser.driver);
             mainPage.NavigateTo();
             LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
