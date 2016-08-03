@@ -8,6 +8,7 @@ using OpenQA.Selenium.Firefox;
 using NUnit.Framework;
 using TC_BookStore.PageObjects;
 using System.Configuration;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.TestCases
 {
@@ -15,17 +16,21 @@ namespace TC_BookStore.TestCases
     class AdminTests
     {
         private IWebDriver _driver;
+        private Browser browser;
 
         [SetUp]
         public void Start()
         {
-            _driver = new FirefoxDriver();
+            browser = new Browser();
+            browser.MaximizeWindow();
+            browser.setImplicitWait(30);
         }
 
         [TearDown]
         public void End()
         {
-            _driver.Quit();
+            browser.driver.Quit();
+
         }
         [Test]
         public void InsertCategory()
