@@ -27,6 +27,7 @@ namespace TC_BookStore.PageObjects
         }
         #endregion
 
+        #region Page Operations
         public void NavigateTo()
         {
             _driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
@@ -46,5 +47,6 @@ namespace TC_BookStore.PageObjects
             RegisterationPage registerPage = new RegisterationPage(_driver);
             return registerPage;
         }
+        #endregion
     }
 }
