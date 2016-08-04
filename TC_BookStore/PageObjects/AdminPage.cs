@@ -5,25 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class AdminPage
+    public class AdminPage : Page
     {
+        #region Web Elements
         [FindsBy(How = How.Id, Using = "Form_Field4")]
         private IWebElement Categories { get; set; }
 
         [FindsBy(How = How.Id, Using = "Form_Field1")]
         private IWebElement Members { get; set; }
+        #endregion
 
-
-        private IWebDriver _driver;
-        public AdminPage(IWebDriver driver)
+        #region Constructors
+        public AdminPage(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
             PageFactory.InitElements(_driver, this);
         }
+        #endregion
 
+        #region Page Operations
         public CategoriesPage ClickOnCategories()
         {
             Categories.Click();
@@ -37,6 +40,6 @@ namespace TC_BookStore.PageObjects
             MembersPage MembersPage = new MembersPage(_driver);
             return MembersPage;
         }
-
+        #endregion
     }
 }

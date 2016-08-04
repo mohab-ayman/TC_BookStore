@@ -15,7 +15,6 @@ namespace TC_BookStore.TestCases
     [TestFixture]
     class AdminTests
     {
-        private IWebDriver _driver;
         private Browser browser;
 
         [SetUp]
@@ -35,7 +34,7 @@ namespace TC_BookStore.TestCases
         [Test]
         public void InsertCategory()
         {
-            MainPage mainPage = new MainPage(_driver);
+            MainPage mainPage = new MainPage(browser.driver);
             mainPage.NavigateTo();
             LoginPage loginPage = mainPage.ClickOnLoginLink();
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");

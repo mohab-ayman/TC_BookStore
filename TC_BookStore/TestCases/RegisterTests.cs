@@ -15,7 +15,6 @@ namespace TC_BookStore.TestCases
     [TestFixture]
     class RegisterTests
     {
-        IWebDriver _driver;
         Browser browser;
 
         [SetUp]
@@ -31,7 +30,7 @@ namespace TC_BookStore.TestCases
         public void RegisterationTest()
         {
             //Navigate to Main page
-            MainPage mainPage = new MainPage(_driver);
+            MainPage mainPage = new MainPage(browser.driver);
             mainPage.NavigateTo();
 
             //Click on Registration link in header
@@ -41,7 +40,7 @@ namespace TC_BookStore.TestCases
             registerPage.RegisterUser("Em", "123451789", "123451789", "Eman2", "abdo2", "eman.farag3@yahoo.com", "Cairo", "01020730865", "Visa", "9018992339828");
 
             //Assert user is registered successfully
-            Assert.AreEqual(this._driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
+            Assert.AreEqual(browser.driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
             LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
             AdminPage Admin = mainPage.pageHeader.ClickAdminLink();

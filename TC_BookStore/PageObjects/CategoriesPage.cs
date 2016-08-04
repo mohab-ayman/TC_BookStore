@@ -5,21 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
+using TC_BookStore.SuperClasses;
 
 namespace TC_BookStore.PageObjects
 {
-    public class CategoriesPage
+    public class CategoriesPage : Page
     {
+        #region Web Elements
         [FindsBy(How = How.Id, Using = "Categories_insert")]
         private IWebElement CatInsert { get; set; }
+        #endregion
 
-        private IWebDriver _driver;
-        public CategoriesPage(IWebDriver driver)
+        #region Constructors
+        public CategoriesPage(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
             PageFactory.InitElements(_driver, this);
         }
+        #endregion
 
+        #region Page Operations
         public InsertPage ClickOnInsert()
         {
             CatInsert.Click();
@@ -31,11 +35,11 @@ namespace TC_BookStore.PageObjects
 
         public Boolean CheckCategory(string cat)
         {
-           Boolean InsertedCat = _driver.FindElement(By.LinkText(cat)).Displayed;
-            if (InsertedCat == true)
+            if (_driver.FindElement(By.LinkText(cat)).Displayed)
                 return true;
             else
                 return false;
         }
+        #endregion
     }
 }
