@@ -50,12 +50,12 @@ namespace TC_BookStore.TestCases
             AdminPage Admin = mainPage.pageHeader.ClickAdminLink();
             MembersPage Members = Admin.ClickOnMembers();
             Assert.True(Members.UserExists(userData.Username));
-            browser.setImplicitWait(30);
+            
 
             //Delete user from list
             Members.DeleteUser(userData.Username);
             Assert.False(Members.UserExists(userData.Username));
-            browser.setImplicitWait(30);
+            
         }
 
         [TearDown]
