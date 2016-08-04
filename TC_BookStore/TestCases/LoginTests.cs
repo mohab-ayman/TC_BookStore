@@ -31,13 +31,15 @@ namespace TC_BookStore
             browser.driver.Quit();
         }
 
-        [Test]
-        public void LoginWithAdmin()
+        [TestCase("admin","admin")]
+        [TestCase("guest", "guest")]
+
+        public void Login(string usrname, string password)
         {
             MainPage mainPage = new MainPage(browser.driver);
             mainPage.NavigateTo();
             LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
-            ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
+            ShoppingCartPage shoppingCart = loginPage.SignIn(usrname, password);
             Assert.AreEqual("User Information", shoppingCart.Header.Text);
         }
     }
