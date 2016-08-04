@@ -4,15 +4,12 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Data.OleDb;
-using System.Data;
-
-
-
-
+using TC_BookStore.TestInputData;
+using Dapper;
 
 namespace TC_BookStore.TestData
 {
-    class RegisterationData
+     class RegisterationData
     {
         public static string TestDataFileConnection()
         {
@@ -21,12 +18,13 @@ namespace TC_BookStore.TestData
             return con;
         }
 
-        public static UserData GetTestData(string keyName)
+        public static UserData GetTestData(string TestcaseID)
         {
             using (var connection = new OleDbConnection(TestDataFileConnection()))
             {
                 connection.Open();
-                var query = string.Format("select * from [DataSet$] where key='{0}'", keyName);
+                var query = "select * from [ResgisterUsers$] where TCID ='" + TestcaseID + "'";
+                //string.Format("select * from [ResgisterUsers$] where TCID ='{0}'", Int32.Parse(TestcaseID));
                 var value = connection.Query<UserData>(query).FirstOrDefault();
                 connection.Close();
                 return value;
@@ -34,4 +32,4 @@ namespace TC_BookStore.TestData
         }
     }
 }
-}
+

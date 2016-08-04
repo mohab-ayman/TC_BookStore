@@ -9,6 +9,8 @@ using OpenQA.Selenium.Firefox;
 using TC_BookStore.PageObjects;
 using System.Configuration;
 using TC_BookStore.SuperClasses;
+using TC_BookStore.TestInputData;
+using TC_BookStore.TestData;
 
 namespace TC_BookStore.TestCases
 {
@@ -35,22 +37,24 @@ namespace TC_BookStore.TestCases
 
             //Click on Registration link in header
             RegisterationPage registerPage = mainPage.pageHeader.ClickRegisterLink();
+            
 
             //Register the user.
-            registerPage.RegisterUser("Em", "123451789", "123451789", "Eman2", "abdo2", "eman.farag3@yahoo.com", "Cairo", "01020730865", "Visa", "9018992339828");
-
+            registerPage.RegisterUser("1");
+            var userData = RegisterationData.GetTestData("1");
             //Assert user is registered successfully
+
             Assert.AreEqual(browser.driver.Url, ConfigurationManager.AppSettings["RedirectURL"]);
             LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
             AdminPage Admin = mainPage.pageHeader.ClickAdminLink();
             MembersPage Members = Admin.ClickOnMembers();
-            Assert.True(Members.UserExists("Em"));
+            Assert.True(Members.UserExists(userData.Username));
             browser.setImplicitWait(30);
 
             //Delete user from list
-            Members.DeleteUser("Em");
-            Assert.False(Members.UserExists("Em"));
+            Members.DeleteUser(userData.Username);
+            Assert.False(Members.UserExists(userData.Username));
             browser.setImplicitWait(30);
         }
 

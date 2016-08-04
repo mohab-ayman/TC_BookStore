@@ -7,6 +7,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using TC_BookStore.SuperClasses;
+using TC_BookStore.TestData;
+using TC_BookStore.TestInputData;
 
 namespace TC_BookStore.PageObjects
 {
@@ -95,19 +97,22 @@ namespace TC_BookStore.PageObjects
         #endregion
 
         #region Page Operations
-        public void RegisterUser(string username, string password, string repassword, string fname, string lname, string email, string addr, string phone, string ccType, string CCno)
+        public void RegisterUser(string testName)
 
         {
-            LoginUser.SendKeys(username);
-            Password.SendKeys(password);
-            ConfirmPassword.SendKeys(repassword);
-            Fname.SendKeys(fname);
-            Lname.SendKeys(lname);
-            Email.SendKeys(email);
-            Address.SendKeys(addr);
-            Phone.SendKeys(phone);
-            CCType.SelectByText(ccType);
-            CCNumber.SendKeys(CCno);
+            var userData = RegisterationData.GetTestData(testName);
+            UserData user = new TestInputData.UserData();
+            user = (UserData)userData;
+            LoginUser.SendKeys(user.Username);
+            Password.SendKeys(user.Password);
+            ConfirmPassword.SendKeys(userData.Repassword);
+            Fname.SendKeys(user.fname);
+            Lname.SendKeys(user.lname);
+            Email.SendKeys(user.email);
+            Address.SendKeys(user.address);
+            Phone.SendKeys(user.phone);
+            CCType.SelectByText(user.CCType);
+            CCNumber.SendKeys(user.CCNumber);
             Register.Click();
             
 
