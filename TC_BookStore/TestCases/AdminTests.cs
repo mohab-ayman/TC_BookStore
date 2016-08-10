@@ -29,22 +29,41 @@ namespace TC_BookStore.TestCases
         public void End()
         {
             browser.driver.Quit();
-
         }
-        [Test]
-        public void InsertCategory()
+
+
+        [TestCase("category1")]
+        [TestCase("category2")]
+
+
+        public void InsertCategory(string category)
         {
+            // Home page
             MainPage mainPage = new MainPage(browser.driver);
             mainPage.NavigateTo();
+
+            // Login Page
             LoginPage loginPage = mainPage.ClickOnLoginLink();
+
+            // Shopping Cart
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
+
+            // Admin Page
             AdminPage adminPage = shoppingCart.ClickOnAdminPage();
+
+            // Categories page
             CategoriesPage categoriesPage = adminPage.ClickOnCategories();
+
+            // Insert page
             InsertPage insertPage = categoriesPage.ClickOnInsert();
-            categoriesPage = insertPage.FillCatName("New Category1");
-            insertPage = categoriesPage.ClickOnInsert();
-            categoriesPage = insertPage.FillCatName("New Category2");
-            Assert.True(categoriesPage.CheckCategory("New Category1"));
+
+            // Back to categories page after insert new category
+            categoriesPage = insertPage.FillCatName(category);
+            
+            // Assert on the inserted category
+            Assert.True(categoriesPage.CheckCategory(category));
+
+            categoriesPage.deleteCategory(category);
         }
 
     }

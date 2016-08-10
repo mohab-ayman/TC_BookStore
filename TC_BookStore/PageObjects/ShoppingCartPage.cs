@@ -22,6 +22,7 @@ namespace TC_BookStore.PageObjects
 
         #endregion
 
+
         #region Constructors
         public ShoppingCartPage(IWebDriver driver): base(driver)
         {
@@ -31,6 +32,7 @@ namespace TC_BookStore.PageObjects
 
         #endregion
 
+        //COMMENT: check to remove this
         #region Page Operations
         public AdminPage ClickOnAdminPage()
         {

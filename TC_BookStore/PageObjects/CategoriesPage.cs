@@ -14,6 +14,9 @@ namespace TC_BookStore.PageObjects
         #region Web Elements
         [FindsBy(How = How.Id, Using = "Categories_insert")]
         private IWebElement CatInsert { get; set; }
+
+        [FindsBy(How = How.Id, Using = "Categories_delete")]
+        private IWebElement CatDelete { get; set; }
         #endregion
 
         #region Constructors
@@ -39,6 +42,13 @@ namespace TC_BookStore.PageObjects
                 return true;
             else
                 return false;
+        }
+
+        public void deleteCategory (string Category)
+        {
+            _driver.FindElement(By.LinkText(Category)).Click();
+            CatDelete.Click();
+
         }
         #endregion
     }

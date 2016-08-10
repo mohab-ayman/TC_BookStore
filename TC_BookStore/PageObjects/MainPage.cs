@@ -33,6 +33,7 @@ namespace TC_BookStore.PageObjects
             _driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
         }
 
+        //COMMENT: Remove this and check reference
         public LoginPage ClickOnLoginLink()
         {
             LoginPageLink.Click();
@@ -40,7 +41,7 @@ namespace TC_BookStore.PageObjects
             return loginPage;
         }
 
-
+        //COMMENT: Remove this 
         public RegisterationPage ClickOnRegisterLink()
         {
             RegisterationPageLink.Click();
