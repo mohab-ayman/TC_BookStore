@@ -41,13 +41,7 @@ namespace TC_BookStore.PageObjects
             return loginPage;
         }
 
-        //COMMENT: Remove this 
-        public RegisterationPage ClickOnRegisterLink()
-        {
-            RegisterationPageLink.Click();
-            RegisterationPage registerPage = new RegisterationPage(_driver);
-            return registerPage;
-        }
+        
         #endregion
     }
 }
