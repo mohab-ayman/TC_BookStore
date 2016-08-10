@@ -42,11 +42,14 @@ namespace TC_BookStore.TestCases
 
             //Search for books using Advance Search.
             AdvSearchPage.SearchForBooks(title,author,category,maxprice,minprice);
-            string Btitle = AdvSearchPage.BookExists();
+            //Assert the book under search is returned successfully
+            Assert.True(AdvSearchPage.BookExists(title));
 
             //Assert book title displayed match book title in search criteria
+            string Btitle = AdvSearchPage.GetBooktitle();
             Assert.AreEqual(Btitle, title);
         }
+
         [TearDown]
         public void End()
         {
