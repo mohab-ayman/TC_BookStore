@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PageObjects\AdminPage.cs" />
+    <Compile Include="PageObjects\AdvancedSearchPage.cs" />
     <Compile Include="PageObjects\CategoriesPage.cs" />
     <Compile Include="PageObjects\Header.cs" />
     <Compile Include="PageObjects\InsertPage.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="PageObjects\MainPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCases\RegisterTests.cs" />
+    <Compile Include="TestCases\SearchBooks.cs" />
     <Compile Include="TestInputData\RegisterationData.cs" />
     <Compile Include="TestInputData\UserData.cs" />
   </ItemGroup>

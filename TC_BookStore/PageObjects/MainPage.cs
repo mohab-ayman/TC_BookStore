@@ -18,6 +18,8 @@ namespace TC_BookStore.PageObjects
 
         [FindsBy(How = How.Id, Using = "Header_Menu_Reg")]
         private IWebElement RegisterationPageLink { get; set; }
+        [FindsBy(How = How.Id, Using = "AdvMenu_Field1")]
+        private IWebElement AdvanceSearchPageLink { get; set; }
         #endregion
 
         #region Constructors
@@ -46,6 +48,12 @@ namespace TC_BookStore.PageObjects
             RegisterationPageLink.Click();
             RegisterationPage registerPage = new RegisterationPage(_driver);
             return registerPage;
+        }
+        public AdvancedSearchPage ClickOnAdvSearchLink()
+        {
+            AdvanceSearchPageLink.Click();
+            AdvancedSearchPage AdvSearchPage = new AdvancedSearchPage(_driver);
+            return AdvSearchPage;
         }
         #endregion
     }
