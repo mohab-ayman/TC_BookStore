@@ -42,6 +42,7 @@ namespace TC_BookStore.TestCases
 
             //Search for books using Advance Search.
             AdvSearchPage.SearchForBooks(title,author,category,maxprice,minprice);
+
             //Assert the book under search is returned successfully
             Assert.True(AdvSearchPage.BookExists(title));
 
