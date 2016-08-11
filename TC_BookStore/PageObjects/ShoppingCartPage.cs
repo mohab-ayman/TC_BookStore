@@ -32,15 +32,5 @@ namespace TC_BookStore.PageObjects
 
         #endregion
 
-        //COMMENT: check to remove this
-        #region Page Operations
-        public AdminPage ClickOnAdminPage()
-        {
-            AdminLink.Click();
-            AdminPage adminPage = new AdminPage(_driver);
-            return adminPage;
-        }
-
-        #endregion
     }
 }

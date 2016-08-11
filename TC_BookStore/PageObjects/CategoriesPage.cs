@@ -38,10 +38,14 @@ namespace TC_BookStore.PageObjects
 
         public Boolean CheckCategory(string cat)
         {
-            if (_driver.FindElement(By.LinkText(cat)).Displayed)
-                return true;
-            else
+            try
+            {
+                return _driver.FindElement(By.LinkText(cat)).Displayed;
+            }
+            catch (NoSuchElementException ex)
+            {
                 return false;
+            }
         }
 
         public void deleteCategory (string Category)

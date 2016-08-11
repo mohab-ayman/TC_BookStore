@@ -43,13 +43,13 @@ namespace TC_BookStore.TestCases
             mainPage.NavigateTo();
 
             // Login Page
-            LoginPage loginPage = mainPage.ClickOnLoginLink();
+            LoginPage loginPage = mainPage.pageHeader.ClickLoginLink();
 
             // Shopping Cart
             ShoppingCartPage shoppingCart = loginPage.SignIn("admin", "admin");
 
             // Admin Page
-            AdminPage adminPage = shoppingCart.ClickOnAdminPage();
+            AdminPage adminPage = shoppingCart.pageHeader.ClickAdminLink();
 
             // Categories page
             CategoriesPage categoriesPage = adminPage.ClickOnCategories();
@@ -61,7 +61,7 @@ namespace TC_BookStore.TestCases
             categoriesPage = insertPage.FillCatName(category);
             
             // Assert on the inserted category
-            Assert.True(categoriesPage.CheckCategory(category));
+            Assert.True(categoriesPage.CheckCategory("mmmmm"));
 
             categoriesPage.deleteCategory(category);
         }
