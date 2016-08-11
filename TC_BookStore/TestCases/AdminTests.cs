@@ -63,6 +63,7 @@ namespace TC_BookStore.TestCases
             // Assert on the inserted category
             Assert.True(categoriesPage.CheckCategory(category));
 
+            // Delete inserted category
             categoriesPage.deleteCategory(category);
         }
 
