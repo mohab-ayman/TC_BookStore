@@ -61,7 +61,7 @@ namespace TC_BookStore.TestCases
             categoriesPage = insertPage.FillCatName(category);
             
             // Assert on the inserted category
-            Assert.True(categoriesPage.CheckCategory("mmmmm"));
+            Assert.True(categoriesPage.CheckCategory(category));
 
             categoriesPage.deleteCategory(category);
         }

@@ -36,13 +36,7 @@ namespace TC_BookStore.PageObjects
             _driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
         }
 
-        //COMMENT: Remove this and check reference
-        public LoginPage ClickOnLoginLink()
-        {
-            LoginPageLink.Click();
-            LoginPage loginPage = new LoginPage(_driver);
-            return loginPage;
-        }
+
 
         public AdvancedSearchPage ClickOnAdvSearchLink()
         {
