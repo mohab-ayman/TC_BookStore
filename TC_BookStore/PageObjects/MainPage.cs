@@ -18,6 +18,9 @@ namespace TC_BookStore.PageObjects
 
         [FindsBy(How = How.Id, Using = "Header_Menu_Reg")]
         private IWebElement RegisterationPageLink { get; set; }
+
+        [FindsBy(How = How.Id, Using = "AdvMenu_Field1")]
+        private IWebElement AdvanceSearchPageLink { get; set; }
         #endregion
 
         #region Constructors
@@ -28,13 +31,26 @@ namespace TC_BookStore.PageObjects
         #endregion
 
         #region Page Operations
-
         public void NavigateTo()
         {
             _driver.Navigate().GoToUrl(ConfigurationManager.AppSettings["BaseUrl"]);
         }
 
-        
-        #endregion
-    }
+        //COMMENT: Remove this and check reference
+        public LoginPage ClickOnLoginLink()
+        {
+            LoginPageLink.Click();
+            LoginPage loginPage = new LoginPage(_driver);
+            return loginPage;
+        }
+
+        public AdvancedSearchPage ClickOnAdvSearchLink()
+        {
+            AdvanceSearchPageLink.Click();
+            AdvancedSearchPage AdvSearchPage = new AdvancedSearchPage(_driver);
+            return AdvSearchPage;
+        }
+
+    #endregion
+}
 }
